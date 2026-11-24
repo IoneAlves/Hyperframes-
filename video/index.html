@@ -368,6 +368,28 @@
       <div id="vinheta"></div>
       <div id="grao-wrap"><div id="grao"></div></div>
 
+      <!-- ===================== NARRAÇÃO =====================
+           Uma fala por cena (voz pt-BR "pf_dora", Kokoro, gerada localmente).
+           Cada fala começa logo após o corte da sua cena. -->
+      <!-- Cena 1: "Dá pra manifestar qualquer coisa?" -->
+      <audio id="voz-1" class="clip" src="assets/voz/cena1.wav" data-start="0.15" data-duration="1.907" data-volume="1" data-audio-group="voz" data-track-index="5"></audio>
+      <!-- Cena 2: "Pensamento, mais emoção, criam o seu estado de ser." -->
+      <audio id="voz-2" class="clip" src="assets/voz/cena2.wav" data-start="2.55" data-duration="2.767" data-volume="1" data-audio-group="voz" data-track-index="5"></audio>
+      <!-- Cena 3: "Mesmos pensamentos, mesma vida. Quebre esse hábito." -->
+      <audio id="voz-3" class="clip" src="assets/voz/cena3.wav" data-start="5.6" data-duration="2.799" data-volume="1" data-audio-group="voz" data-track-index="5"></audio>
+      <!-- Cena 4: "Defina a intenção. Sinta gratidão antes. Repita todo dia." (termina 0,27 s dentro da cena 5) -->
+      <audio id="voz-4" class="clip" src="assets/voz/cena4.wav" data-start="8.5" data-duration="3.274" data-volume="1" data-audio-group="voz" data-track-index="5"></audio>
+      <!-- Cena 5: "Pare de esperar sentir. Sinta primeiro." -->
+      <audio id="voz-5" class="clip" src="assets/voz/cena5.wav" data-start="11.95" data-duration="2.272" data-volume="1" data-audio-group="voz" data-track-index="5"></audio>
+      <hf-audio-group id="voz"></hf-audio-group>
+
+      <!-- ===================== MÚSICA =====================
+           Base lo-fi 95 BPM (dois loops CC0 mixados em assets/musica/trilha.mp3).
+           Entra com fade-in, fica baixa enquanto a voz fala ("ducking" pela automação
+           de volume), sobe um pouco no final e sai com fade-out. -->
+      <audio id="musica" class="clip" src="assets/musica/trilha.mp3" data-start="0" data-duration="15" data-volume="1" data-fade-in="0.4" data-fade-out="1.2" data-track-index="6"
+        data-automation="{&quot;version&quot;:1,&quot;lanes&quot;:[{&quot;target&quot;:&quot;volume&quot;,&quot;points&quot;:[{&quot;t&quot;:0,&quot;v&quot;:0.3},{&quot;t&quot;:14.25,&quot;v&quot;:0.3},{&quot;t&quot;:14.6,&quot;v&quot;:0.5}]}]}"></audio>
+
       <!-- ===================== EFEITOS SONOROS =====================
            Cada <audio> toca um trecho curto de um efeito (papel colado, caneta, página,
            pop) exatamente no instante da animação correspondente. Todos ficam no grupo
