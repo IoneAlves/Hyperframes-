@@ -368,7 +368,91 @@
       <div id="vinheta"></div>
       <div id="grao-wrap"><div id="grao"></div></div>
 
-      <!-- Sem música: não há arquivo de áudio na pasta (a trilha entra no próprio TikTok). -->
+      <!-- ===================== EFEITOS SONOROS =====================
+           Cada <audio> toca um trecho curto de um efeito (papel colado, caneta, página,
+           pop) exatamente no instante da animação correspondente. Todos ficam no grupo
+           "sfx", abaixo da voz e da música. Créditos em assets/sfx/CREDITS.md (CC0). -->
+      <!-- cena 1: recorte branco do título assenta -->
+      <audio id="sfx-01" class="clip" src="assets/sfx/papel-1.mp3" data-start="0.0" data-duration="0.39" data-media-start="0" data-volume="0.45" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 1: etiqueta "Segundo Joe Dispenza" é colada -->
+      <audio id="sfx-02" class="clip" src="assets/sfx/papel-3.mp3" data-start="0.35" data-duration="0.29" data-media-start="0" data-volume="0.4" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 1: marca-texto pinta MANIFESTAR -->
+      <audio id="sfx-03" class="clip" src="assets/sfx/rabisco.mp3" data-start="0.5" data-duration="0.4" data-media-start="0.5" data-volume="0.3" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 1: estrelinha amarela -->
+      <audio id="sfx-04" class="clip" src="assets/sfx/pop.mp3" data-start="0.6" data-duration="0.18" data-media-start="0" data-volume="0.3" data-fade-out="0.04" data-audio-group="sfx" data-track-index="12"></audio>
+      <!-- cena 1: seta roxa desenhada -->
+      <audio id="sfx-05" class="clip" src="assets/sfx/caneta.mp3" data-start="0.85" data-duration="0.45" data-media-start="0.15" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 1: estrelinha roxa -->
+      <audio id="sfx-06" class="clip" src="assets/sfx/pop.mp3" data-start="0.88" data-duration="0.18" data-media-start="0" data-volume="0.25" data-fade-out="0.04" data-audio-group="sfx" data-track-index="12"></audio>
+      <!-- cena 1: risquinhos de ênfase -->
+      <audio id="sfx-07" class="clip" src="assets/sfx/rabisco.mp3" data-start="1.3" data-duration="0.28" data-media-start="1.6" data-volume="0.25" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- corte seco para a cena 2 -->
+      <audio id="sfx-08" class="clip" src="assets/sfx/pagina-leve.mp3" data-start="2.5" data-duration="0.5" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 2: PENSAMENTO colado -->
+      <audio id="sfx-09" class="clip" src="assets/sfx/papel-1.mp3" data-start="2.55" data-duration="0.39" data-media-start="0" data-volume="0.45" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 2: sinal + -->
+      <audio id="sfx-10" class="clip" src="assets/sfx/pop.mp3" data-start="2.95" data-duration="0.18" data-media-start="0" data-volume="0.3" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 2: EMOÇÃO colado -->
+      <audio id="sfx-11" class="clip" src="assets/sfx/papel-2.mp3" data-start="3.15" data-duration="0.49" data-media-start="0" data-volume="0.45" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 2: sinal = -->
+      <audio id="sfx-12" class="clip" src="assets/sfx/pop.mp3" data-start="3.55" data-duration="0.18" data-media-start="0" data-volume="0.3" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 2: SEU ESTADO DE SER colado -->
+      <audio id="sfx-13" class="clip" src="assets/sfx/papel-1.mp3" data-start="3.75" data-duration="0.39" data-media-start="0" data-volume="0.5" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 2: setas desenhadas -->
+      <audio id="sfx-14" class="clip" src="assets/sfx/caneta.mp3" data-start="4.2" data-duration="0.55" data-media-start="0.3" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 2: sublinhado amarelo -->
+      <audio id="sfx-15" class="clip" src="assets/sfx/rabisco.mp3" data-start="4.8" data-duration="0.3" data-media-start="2.2" data-volume="0.25" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- corte seco para a cena 3 -->
+      <audio id="sfx-16" class="clip" src="assets/sfx/pagina-leve.mp3" data-start="5.5" data-duration="0.5" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 3: disco de papel colado -->
+      <audio id="sfx-17" class="clip" src="assets/sfx/papel-2.mp3" data-start="5.5" data-duration="0.49" data-media-start="0" data-volume="0.4" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 3: ciclo se desenha -->
+      <audio id="sfx-18" class="clip" src="assets/sfx/caneta.mp3" data-start="5.55" data-duration="0.6" data-media-start="0.6" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="12"></audio>
+      <!-- cena 3: etiqueta 1 -->
+      <audio id="sfx-19" class="clip" src="assets/sfx/papel-3.mp3" data-start="5.7" data-duration="0.29" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="13"></audio>
+      <!-- cena 3: etiqueta 2 -->
+      <audio id="sfx-20" class="clip" src="assets/sfx/papel-3.mp3" data-start="5.92" data-duration="0.29" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="14"></audio>
+      <!-- cena 3: etiqueta 3 -->
+      <audio id="sfx-21" class="clip" src="assets/sfx/papel-3.mp3" data-start="6.14" data-duration="0.29" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 3: primeiro risco do X -->
+      <audio id="sfx-22" class="clip" src="assets/sfx/rabisco.mp3" data-start="6.5" data-duration="0.16" data-media-start="3.0" data-volume="0.45" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 3: segundo risco do X -->
+      <audio id="sfx-23" class="clip" src="assets/sfx/rabisco.mp3" data-start="6.68" data-duration="0.16" data-media-start="3.3" data-volume="0.45" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 3: frase "Quebre o hábito" colada -->
+      <audio id="sfx-24" class="clip" src="assets/sfx/papel-1.mp3" data-start="6.8" data-duration="0.39" data-media-start="0" data-volume="0.45" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- corte seco para a cena 4 -->
+      <audio id="sfx-25" class="clip" src="assets/sfx/pagina-leve.mp3" data-start="8.5" data-duration="0.5" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 4: etiqueta "O método" -->
+      <audio id="sfx-26" class="clip" src="assets/sfx/papel-3.mp3" data-start="8.5" data-duration="0.29" data-media-start="0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 4: caderno colado -->
+      <audio id="sfx-27" class="clip" src="assets/sfx/papel-2.mp3" data-start="8.55" data-duration="0.49" data-media-start="0" data-volume="0.4" data-fade-out="0.04" data-audio-group="sfx" data-track-index="12"></audio>
+      <!-- cena 4: check 1 -->
+      <audio id="sfx-28" class="clip" src="assets/sfx/caneta.mp3" data-start="9.05" data-duration="0.22" data-media-start="1.0" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 4: check 2 -->
+      <audio id="sfx-29" class="clip" src="assets/sfx/caneta.mp3" data-start="9.55" data-duration="0.22" data-media-start="1.4" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 4: marca-texto em ANTES -->
+      <audio id="sfx-30" class="clip" src="assets/sfx/rabisco.mp3" data-start="9.65" data-duration="0.32" data-media-start="0.9" data-volume="0.25" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 4: círculo roxo em ANTES -->
+      <audio id="sfx-31" class="clip" src="assets/sfx/caneta.mp3" data-start="9.95" data-duration="0.42" data-media-start="1.8" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 4: check 3 -->
+      <audio id="sfx-32" class="clip" src="assets/sfx/caneta.mp3" data-start="10.35" data-duration="0.22" data-media-start="0.5" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- corte seco para a cena 5 -->
+      <audio id="sfx-33" class="clip" src="assets/sfx/pagina.mp3" data-start="11.5" data-duration="0.6" data-media-start="0.4" data-volume="0.35" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 5: cérebro colado -->
+      <audio id="sfx-34" class="clip" src="assets/sfx/papel-1.mp3" data-start="11.55" data-duration="0.39" data-media-start="0" data-volume="0.4" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 5: coração colado -->
+      <audio id="sfx-35" class="clip" src="assets/sfx/papel-2.mp3" data-start="11.65" data-duration="0.49" data-media-start="0" data-volume="0.4" data-fade-out="0.04" data-audio-group="sfx" data-track-index="12"></audio>
+      <!-- cena 5: linha cérebro–coração -->
+      <audio id="sfx-36" class="clip" src="assets/sfx/caneta.mp3" data-start="11.85" data-duration="0.4" data-media-start="1.2" data-volume="0.3" data-fade-out="0.04" data-audio-group="sfx" data-track-index="13"></audio>
+      <!-- cena 5: papel do texto final colado -->
+      <audio id="sfx-37" class="clip" src="assets/sfx/papel-2.mp3" data-start="12.1" data-duration="0.49" data-media-start="0" data-volume="0.4" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 5: marca-texto em "Sinta primeiro." -->
+      <audio id="sfx-38" class="clip" src="assets/sfx/rabisco.mp3" data-start="12.9" data-duration="0.4" data-media-start="3.5" data-volume="0.25" data-fade-out="0.04" data-audio-group="sfx" data-track-index="10"></audio>
+      <!-- cena 5: estrelinha amarela -->
+      <audio id="sfx-39" class="clip" src="assets/sfx/pop.mp3" data-start="13.0" data-duration="0.18" data-media-start="0" data-volume="0.3" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <!-- cena 5: estrelinha roxa -->
+      <audio id="sfx-40" class="clip" src="assets/sfx/pop.mp3" data-start="13.2" data-duration="0.18" data-media-start="0" data-volume="0.25" data-fade-out="0.04" data-audio-group="sfx" data-track-index="11"></audio>
+      <hf-audio-group id="sfx"></hf-audio-group>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });
