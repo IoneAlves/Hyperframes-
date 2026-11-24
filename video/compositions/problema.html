@@ -1,0 +1,203 @@
+<!--
+  CENA 3 — O PROBLEMA (5,5 s a 8,5 s do vídeo)
+  Um ciclo circular desenhado à mão (três arcos com setas) gira devagar.
+  Em volta dele: "mesmos pensamentos → mesmas escolhas → mesma vida".
+  Um X roxo é riscado sobre o ciclo e entra a frase:
+  "Quebre o hábito de ser você mesmo."
+-->
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    #p-palco {
+      position: absolute;
+      inset: 0;
+      transform-origin: 495px 830px;
+    }
+    #p-cabeca {
+      position: absolute;
+      left: 70px;
+      width: 850px;
+      top: 270px;
+      text-align: center;
+      font-size: 34px;
+      color: var(--tinta);
+    }
+    /* O anel de setas gira em torno do centro do círculo (495, 830) */
+    #p-anel {
+      transform-origin: 495px 830px;
+    }
+    #p-disco {
+      left: 175px;
+      top: 510px;
+    }
+    #p-disco .papel {
+      width: 640px;
+      height: 640px;
+      clip-path: polygon(50% 0%, 63% 2%, 75% 7%, 86% 15%, 93% 25%, 99% 37%, 100% 50%, 98% 63%, 93% 75%, 85% 86%, 75% 93%, 63% 98%, 50% 100%, 37% 98%, 25% 93%, 14% 85%, 7% 75%, 2% 63%, 0% 50%, 2% 37%, 7% 25%, 15% 14%, 25% 7%, 37% 2%);
+    }
+    #p-jornal {
+      left: 520px;
+      top: 430px;
+    }
+    #p-jornal .papel {
+      width: 420px;
+      height: 320px;
+    }
+    #p-preto {
+      left: 90px;
+      top: 1000px;
+    }
+    #p-preto .papel {
+      width: 360px;
+      height: 220px;
+    }
+    /* Etiquetas de papel em volta do ciclo, centralizadas no seu ponto */
+    .p-etiqueta .papel {
+      padding: 16px 26px 18px;
+      font-family: var(--font-rotulo);
+      font-weight: 700;
+      font-size: 42px;
+      white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+    #p-e1 {
+      left: 495px;
+      top: 525px;
+    }
+    #p-e2 {
+      left: 700px;
+      top: 935px;
+    }
+    #p-e3 {
+      left: 290px;
+      top: 935px;
+    }
+    /* Frase final num recorte de papel branco */
+    #p-frase {
+      left: 495px;
+      top: 1250px;
+    }
+    #p-frase .papel {
+      padding: 34px 48px 40px;
+      font-size: 82px;
+      text-align: center;
+      width: 820px;
+    }
+    .p-palavra {
+      display: inline-block;
+    }
+  </style>
+
+  <div id="root" data-composition-id="problema" data-width="1080" data-height="1920">
+    <div id="p-palco">
+      <div id="p-cabeca" class="rotulo">O problema</div>
+
+      <!-- Colagem de apoio: disco de papel branco atrás do ciclo, jornal e papel preto -->
+      <div id="p-jornal" class="recorte"><div class="papel jornal rasgado-b"></div></div>
+      <div id="p-disco" class="recorte fita"><div class="papel"></div></div>
+      <div id="p-preto" class="recorte"><div class="papel preto pontos"></div></div>
+
+      <!-- O CICLO: três arcos desenhados à mão, cada um com a ponta de seta -->
+      <svg class="camada" viewBox="0 0 1080 1920">
+        <g id="p-anel">
+          <path id="p-arco1" class="traco" pathLength="1" stroke="#111111" stroke-width="10"
+            d="M630.0,596.2 A276,276 0 0 1 736.4,696.2 A268,268 0 0 1 764.8,839.4" />
+          <path id="p-ponta1" class="traco" pathLength="1" stroke="#111111" stroke-width="10"
+            d="M749.9,808.8 L764.8,839.4 L781.8,810.0" />
+          <path id="p-arco2" class="traco" pathLength="1" stroke="#111111" stroke-width="10"
+            d="M638.1,1059.0 A276,276 0 0 1 495.0,1106.0 A268,268 0 0 1 351.9,1059.0" />
+          <path id="p-ponta2" class="traco" pathLength="1" stroke="#111111" stroke-width="10"
+            d="M385.8,1061.4 L351.9,1059.0 L368.9,1088.4" />
+          <path id="p-arco3" class="traco" pathLength="1" stroke="#111111" stroke-width="10"
+            d="M225.2,839.4 A276,276 0 0 1 253.6,696.2 A268,268 0 0 1 360.0,596.2" />
+          <path id="p-ponta3" class="traco" pathLength="1" stroke="#111111" stroke-width="10"
+            d="M342.0,625.0 L360.0,596.2 L326.0,597.4" />
+        </g>
+      </svg>
+
+      <!-- As três etiquetas do ciclo -->
+      <div id="p-e1" class="recorte p-etiqueta"><div class="papel reto">mesmos pensamentos</div></div>
+      <div id="p-e2" class="recorte p-etiqueta"><div class="papel reto">mesmas escolhas</div></div>
+      <div id="p-e3" class="recorte p-etiqueta"><div class="papel reto">mesma vida</div></div>
+
+      <svg id="p-brilho" class="brilho" style="left:860px;top:1180px;width:80px;height:80px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#FFD400" stroke="#111111" stroke-width="4" /></svg>
+
+      <!-- O X ROXO riscado por cima do ciclo (dois traços) -->
+      <svg class="camada" viewBox="0 0 1080 1920">
+        <path id="p-x1" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="26"
+          d="M265,585 C420,740 560,900 735,1080" />
+        <path id="p-x2" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="26"
+          d="M740,580 C600,730 430,920 255,1085" />
+      </svg>
+
+      <!-- Frase de virada -->
+      <div id="p-frase" class="recorte dupla d-roxo fita">
+        <div class="papel titulo">
+          <span class="p-palavra">Quebre</span> <span class="p-palavra">o</span> <span class="p-palavra">hábito</span><br />
+          <span class="p-palavra">de</span> <span class="p-palavra">ser</span> <span class="p-palavra">você</span> <span class="p-palavra">mesmo.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // KEN BURNS leve no palco inteiro.
+    tl.fromTo("#p-palco", { scale: 1.04 }, { scale: 1.0, duration: 3, ease: "none" }, 0);
+
+    // Cabeçalho "O PROBLEMA".
+    tl.fromTo("#p-cabeca", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.15, ease: "power4.out" }, 0);
+
+    // APOIO: jornal, disco branco e papel preto colados com leve rotação.
+    tl.fromTo("#p-jornal", { opacity: 0, rotation: 16 }, { opacity: 1, rotation: 7, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#p-disco", { opacity: 0, rotation: -10, scale: 1.1 }, { opacity: 1, rotation: -3, scale: 1, duration: 0.35, ease: "expo.out" }, 0);
+    tl.fromTo("#p-preto", { opacity: 0, rotation: -18, x: -50 }, { opacity: 1, rotation: -8, x: 0, duration: 0.3, ease: "expo.out" }, 0.1);
+
+    // O CICLO SE DESENHA: os três arcos em sequência, cada ponta logo depois do seu arco.
+    ["1", "2", "3"].forEach((n, i) => {
+      tl.fromTo(`#p-arco${n}`, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.22, ease: "power1.inOut" }, 0.05 + i * 0.2);
+      tl.fromTo(`#p-ponta${n}`, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.08, ease: "power1.out" }, 0.25 + i * 0.2);
+    });
+
+    // A SETA GIRANDO: o anel gira em velocidade constante (linear) durante toda a cena.
+    tl.fromTo("#p-anel", { rotation: 0, svgOrigin: "495 830" }, { rotation: 120, svgOrigin: "495 830", duration: 3, ease: "none" }, 0);
+
+    // ETIQUETAS: entram como recortes, uma a cada passo do ciclo (centralizadas no ponto).
+    const etiqueta = (alvo, t, rot) =>
+      tl.fromTo(
+        alvo,
+        { opacity: 0, xPercent: -50, yPercent: -50, scale: 1.3, rotation: rot * -3 },
+        { opacity: 1, xPercent: -50, yPercent: -50, scale: 1, rotation: rot, duration: 0.3, ease: "back.out(1.6)" },
+        t,
+      );
+    etiqueta("#p-e1", 0.2, -2);
+    etiqueta("#p-e2", 0.42, 3);
+    etiqueta("#p-e3", 0.64, -3);
+
+    // O X ROXO: dois riscos rápidos e firmes, como caneta (1,0 s → 1,3 s).
+    tl.fromTo("#p-x1", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.14, ease: "power3.in" }, 1.0);
+    tl.fromTo("#p-x2", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.14, ease: "power3.in" }, 1.18);
+    // Um pequeno "tranco" de câmera no impacto do X.
+    tl.fromTo("#p-palco", { x: 0 }, { x: 10, duration: 0.05, yoyo: true, repeat: 3, ease: "none" }, 1.32);
+
+    // FRASE: o recorte cai e as palavras surgem uma a uma, desfoque → nítido.
+    tl.fromTo(
+      "#p-frase",
+      { opacity: 0, xPercent: -50, rotation: 5, y: 40 },
+      { opacity: 1, xPercent: -50, rotation: -1.5, y: 0, duration: 0.35, ease: "expo.out" },
+      1.3,
+    );
+    tl.fromTo(
+      "#p-frase .p-palavra",
+      { opacity: 0, filter: "blur(6px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.06, ease: "power4.out" },
+      1.36,
+    );
+
+    window.__timelines["problema"] = tl;
+  </script>
+</template>

@@ -1,0 +1,204 @@
+<!--
+  CENA 4 — O MÉTODO (8,5 s a 11,5 s do vídeo)
+  Uma folha de caderno recortada com três itens. Cada item entra e ganha um "check"
+  desenhado à mão na caixinha:
+    1. Defina uma intenção clara
+    2. Sinta a emoção ANTES de acontecer (gratidão)
+    3. Repita todos os dias
+  A palavra ANTES ganha marca-texto amarelo e um círculo roxo desenhado.
+-->
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    #m-palco {
+      position: absolute;
+      inset: 0;
+      transform-origin: 495px 900px;
+    }
+    /* Título num recorte de papel preto, centralizado em x = 495 */
+    #m-titulo {
+      left: 495px;
+      top: 235px;
+    }
+    #m-titulo .papel {
+      padding: 26px 54px 36px;
+      font-size: 104px;
+      white-space: nowrap;
+    }
+    #m-jornal {
+      left: 560px;
+      top: 1340px;
+    }
+    #m-jornal .papel {
+      width: 400px;
+      height: 260px;
+    }
+    /* Folha de caderno: papel branco com pautas cinza e margem roxa */
+    #m-folha {
+      left: 80px;
+      top: 470px;
+    }
+    #m-folha .papel {
+      width: 830px;
+      height: 1000px;
+      background-image:
+        linear-gradient(90deg, transparent 118px, rgba(123, 47, 247, 0.55) 118px, rgba(123, 47, 247, 0.55) 121px, transparent 121px),
+        repeating-linear-gradient(180deg, transparent 0 79px, rgba(138, 138, 138, 0.35) 79px 81px),
+        var(--ruido-fino);
+      background-size: auto, auto, 360px 360px;
+    }
+    /* Cada item da lista: caixinha + número + texto */
+    .m-item {
+      position: absolute;
+      left: 110px;
+      width: 790px;
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+    }
+    #m-i1 {
+      top: 560px;
+    }
+    #m-i2 {
+      top: 830px;
+    }
+    #m-i3 {
+      top: 1200px;
+    }
+    .m-caixa {
+      position: relative;
+      flex: 0 0 74px;
+      height: 74px;
+      margin-top: 4px;
+    }
+    .m-caixa svg {
+      position: absolute;
+      left: -10px;
+      top: -22px;
+      width: 104px;
+      height: 104px;
+      overflow: visible;
+    }
+    .m-num {
+      font-size: 64px;
+      color: var(--destaque);
+      flex: 0 0 auto;
+      line-height: 1.1;
+    }
+    .m-texto {
+      font-family: var(--font-rotulo);
+      font-weight: 800;
+      font-size: 56px;
+      line-height: 1.12;
+      letter-spacing: -0.02em;
+      padding-top: 6px;
+    }
+    .m-obs {
+      display: block;
+      margin-top: 14px;
+      font-weight: 600;
+      font-style: italic;
+      font-size: 40px;
+      color: var(--destaque);
+    }
+    /* ANTES: marca-texto + círculo roxo por cima */
+    #m-antes {
+      position: relative;
+    }
+    #m-circulo {
+      position: absolute;
+      left: -28px;
+      top: -22px;
+      width: calc(100% + 56px);
+      height: calc(100% + 40px);
+      overflow: visible;
+    }
+  </style>
+
+  <div id="root" data-composition-id="metodo" data-width="1080" data-height="1920">
+    <div id="m-palco">
+      <div id="m-titulo" class="recorte dupla d-roxo"><div class="papel preto rasgado-b titulo">O método</div></div>
+      <svg id="m-brilho" class="brilho" style="left:820px;top:215px;width:90px;height:90px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#FFD400" stroke="#111111" stroke-width="4" /></svg>
+
+      <!-- Colagem de apoio atrás do caderno -->
+      <div id="m-jornal" class="recorte"><div class="papel jornal rasgado-b"></div></div>
+      <div id="m-folha" class="recorte dupla d-preto fita"><div class="papel reto"></div></div>
+
+      <!-- Item 1 -->
+      <div id="m-i1" class="m-item">
+        <div class="m-caixa">
+          <svg viewBox="0 0 104 104">
+            <path class="traco" pathLength="1" stroke="#111111" stroke-width="5" style="stroke-dashoffset: 0" d="M14,26 L84,24 L86,96 L12,94 Z" />
+            <path id="m-check1" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="11" d="M22,58 L44,84 L96,8" />
+          </svg>
+        </div>
+        <div class="m-num titulo">1.</div>
+        <div class="m-texto">Defina uma intenção clara</div>
+      </div>
+
+      <!-- Item 2 -->
+      <div id="m-i2" class="m-item">
+        <div class="m-caixa">
+          <svg viewBox="0 0 104 104">
+            <path class="traco" pathLength="1" stroke="#111111" stroke-width="5" style="stroke-dashoffset: 0" d="M14,26 L84,24 L86,96 L12,94 Z" />
+            <path id="m-check2" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="11" d="M22,58 L44,84 L96,8" />
+          </svg>
+        </div>
+        <div class="m-num titulo">2.</div>
+        <div class="m-texto">
+          Sinta a emoção
+          <span id="m-antes" class="mt"><span class="mt-tinta" id="m-mt"></span>ANTES<svg id="m-circulo" viewBox="0 0 200 100" preserveAspectRatio="none"><path id="m-circ" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="5" vector-effect="non-scaling-stroke" d="M30,14 C80,0 175,6 192,40 C205,78 140,98 90,95 C30,92 4,70 8,46 C12,22 50,10 112,8" /></svg></span>
+          de acontecer
+          <span class="m-obs">(gratidão)</span>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div id="m-i3" class="m-item">
+        <div class="m-caixa">
+          <svg viewBox="0 0 104 104">
+            <path class="traco" pathLength="1" stroke="#111111" stroke-width="5" style="stroke-dashoffset: 0" d="M14,26 L84,24 L86,96 L12,94 Z" />
+            <path id="m-check3" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="11" d="M22,58 L44,84 L96,8" />
+          </svg>
+        </div>
+        <div class="m-num titulo">3.</div>
+        <div class="m-texto">Repita todos os dias</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // KEN BURNS: aproximação lenta na folha.
+    tl.fromTo("#m-palco", { scale: 1.0 }, { scale: 1.05, duration: 3, ease: "none" }, 0);
+
+    // TÍTULO "O método": desfoque → nítido no corte.
+    tl.fromTo("#m-titulo", { opacity: 0, xPercent: -50, rotation: 6, scale: 1.2 }, { opacity: 1, xPercent: -50, rotation: -2, scale: 1, duration: 0.3, ease: "back.out(1.5)" }, 0);
+    tl.fromTo("#m-brilho", { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.35, ease: "back.out(2)" }, 0.2);
+    // Jornal de apoio atrás do canto do caderno.
+    tl.fromTo("#m-jornal", { opacity: 0, rotation: 15 }, { opacity: 1, rotation: 8, duration: 0.3, ease: "expo.out" }, 0.05);
+
+    // FOLHA DE CADERNO: colada com leve rotação.
+    tl.fromTo("#m-folha", { opacity: 0, rotation: 4, scale: 1.06 }, { opacity: 1, rotation: -1, scale: 1, duration: 0.35, ease: "expo.out" }, 0.02);
+
+    // ITENS: cada linha entra deslizando um pouco da esquerda e, logo depois,
+    // o check roxo se desenha na caixinha.
+    const item = (alvo, check, t) => {
+      tl.fromTo(alvo, { opacity: 0, x: -40 }, { opacity: 1, x: 0, duration: 0.3, ease: "expo.out" }, t);
+      tl.fromTo(check, { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.2, ease: "power2.in" }, t + 0.25);
+    };
+    item("#m-i1", "#m-check1", 0.3);
+    item("#m-i2", "#m-check2", 0.8);
+    item("#m-i3", "#m-check3", 1.6);
+
+    // ANTES: marca-texto amarelo pinta a palavra, depois o círculo roxo é desenhado.
+    tl.fromTo("#m-mt", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power2.inOut" }, 1.15);
+    tl.fromTo("#m-circ", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, ease: "power1.inOut" }, 1.45);
+
+    window.__timelines["metodo"] = tl;
+  </script>
+</template>

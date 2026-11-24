@@ -1,0 +1,180 @@
+<!--
+  CENA 1 — GANCHO (0 s a 2,5 s do vídeo)
+  Pergunta grande: "Dá para MANIFESTAR qualquer coisa?"
+  - Rótulo pequeno em cima: "Segundo Joe Dispenza" (tira de papel preto).
+  - MANIFESTAR recebe o marca-texto amarelo pintando da esquerda para a direita.
+  - Uma seta roxa desenhada à mão liga o rótulo ao título; rabiscos de destaque
+    em volta do ponto de interrogação.
+  - O quadro inteiro faz um zoom lento tipo "Ken Burns".
+  O quadro 0 já mostra MANIFESTAR na tela: ele é a miniatura do TikTok.
+-->
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    /* Palco que recebe o zoom lento (Ken Burns). Origem perto do título. */
+    #g-palco {
+      position: absolute;
+      inset: 0;
+      transform-origin: 495px 900px;
+    }
+    /* Tira de papel preta com o rótulo */
+    #g-rotulo {
+      left: 250px;
+      top: 470px;
+    }
+    #g-rotulo .papel {
+      padding: 22px 34px 18px;
+      font-size: 32px;
+    }
+    /* Recorte de papel branco atrás do título */
+    #g-folha {
+      left: 70px;
+      top: 640px;
+    }
+    #g-folha .papel {
+      width: 850px;
+      height: 560px;
+    }
+    /* Peças de apoio da colagem (atrás do título) */
+    #g-jornal {
+      left: 430px;
+      top: 1150px;
+    }
+    #g-jornal .papel {
+      width: 470px;
+      height: 300px;
+    }
+    #g-pontos {
+      left: 120px;
+      top: 560px;
+    }
+    #g-pontos .papel {
+      width: 300px;
+      height: 260px;
+    }
+    #g-preto {
+      left: 110px;
+      top: 1190px;
+    }
+    #g-preto .papel {
+      width: 420px;
+      height: 200px;
+    }
+    #g-titulo {
+      position: absolute;
+      left: 70px;
+      width: 850px;
+      top: 700px;
+      text-align: center;
+    }
+    #g-linha1 {
+      font-size: 104px;
+      display: block;
+    }
+    #g-manifestar {
+      font-size: 118px;
+      display: block;
+      margin: 18px 0 22px;
+    }
+    #g-linha3 {
+      font-size: 100px;
+      font-style: italic;
+      display: block;
+    }
+    .g-palavra {
+      display: inline-block;
+    }
+  </style>
+
+  <div id="root" data-composition-id="gancho" data-width="1080" data-height="1920">
+    <div id="g-palco">
+      <!-- Recorte branco (entra com leve rotação, como papel colado) -->
+      <!-- Colagem de apoio: retícula lilás, recorte de jornal e papel preto rasgado atrás do título -->
+      <div id="g-jornal" class="recorte"><div class="papel jornal rasgado-b"></div></div>
+      <div id="g-pontos" class="recorte"><div class="papel lilas pontos"></div></div>
+      <div id="g-preto" class="recorte"><div class="papel preto pontos rasgado-b"></div></div>
+
+      <!-- Recorte branco do título (camada dupla preta + fita adesiva) -->
+      <div id="g-folha" class="recorte dupla d-preto fita"><div class="papel"></div></div>
+
+      <!-- Título em três linhas -->
+      <div id="g-titulo" class="titulo">
+        <span id="g-linha1"><span class="g-palavra" id="g-da">Dá</span> <span class="g-palavra" id="g-para">para</span></span>
+        <span id="g-manifestar"><span class="mt"><span class="mt-tinta" id="g-mt"></span>MANIFESTAR</span></span>
+        <span id="g-linha3"><span class="g-palavra" id="g-qualquer">qualquer</span> <span class="g-palavra" id="g-coisa">coisa?</span></span>
+      </div>
+
+      <!-- Rótulo "Segundo Joe Dispenza" -->
+      <div id="g-rotulo" class="recorte">
+        <div class="papel preto reto rotulo">Segundo Joe Dispenza</div>
+      </div>
+
+      <!-- Brilhos de colagem -->
+      <svg id="g-brilho1" class="brilho" style="left:820px;top:600px;width:90px;height:90px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#FFD400" stroke="#111111" stroke-width="4" /></svg>
+      <svg id="g-brilho2" class="brilho" style="left:95px;top:1250px;width:80px;height:80px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#7B2FF7" stroke="#111111" stroke-width="4" /></svg>
+
+      <!-- Traços à mão: seta do rótulo até o título e rabiscos de destaque -->
+      <svg class="camada" viewBox="0 0 1080 1920">
+        <!-- seta curva saindo do rótulo e apontando para MANIFESTAR -->
+        <path id="g-seta" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="9"
+          d="M790,520 C880,560 905,660 860,760" />
+        <path id="g-seta-ponta" class="traco" pathLength="1" stroke="#7B2FF7" stroke-width="9"
+          d="M828,724 L860,764 L884,718" />
+        <!-- três risquinhos de "ênfase" perto do ponto de interrogação -->
+        <path id="g-enfase" class="traco" pathLength="1" stroke="#111111" stroke-width="7"
+          d="M805,1250 L835,1290 M850,1235 L862,1288 M895,1248 L880,1292" />
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // KEN BURNS: zoom lento e contínuo no palco inteiro durante a cena (1.00 → 1.06).
+    tl.fromTo("#g-palco", { scale: 1 }, { scale: 1.06, duration: 2.5, ease: "none" }, 0);
+
+    // RECORTE BRANCO: já colado no quadro 0, faz um pequeno "assentamento" de rotação.
+    tl.fromTo("#g-folha", { rotation: -4, scale: 1.04 }, { rotation: -1.5, scale: 1, duration: 0.5, ease: "expo.out" }, 0);
+
+    // PEÇAS DE APOIO: já coladas no quadro 0; cada uma assenta com um pequeno giro.
+    tl.fromTo("#g-pontos", { rotation: -14 }, { rotation: -8, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#g-jornal", { rotation: 12, y: 40 }, { rotation: 6, y: 0, duration: 0.5, ease: "expo.out" }, 0);
+    tl.fromTo("#g-preto", { opacity: 0, rotation: -12, x: -60 }, { opacity: 1, rotation: -5, x: 0, duration: 0.35, ease: "back.out(1.4)" }, 0.2);
+    // BRILHOS: estalam na tela girando.
+    tl.fromTo(["#g-brilho1", "#g-brilho2"], { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.35, stagger: 0.25, ease: "back.out(2)" }, 0.6);
+
+    // MANIFESTAR: presente desde o quadro 0 (é a miniatura), só assenta de leve.
+    tl.fromTo("#g-manifestar", { scale: 1.08 }, { scale: 1, duration: 0.45, ease: "expo.out" }, 0);
+
+    // "Dá para" e "qualquer coisa?": entram palavra a palavra com desfoque → nítido.
+    tl.fromTo(
+      ["#g-da", "#g-para", "#g-qualquer", "#g-coisa"],
+      { opacity: 0, filter: "blur(6px)" },
+      { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.08, ease: "power4.out" },
+      0.08,
+    );
+
+    // MARCA-TEXTO AMARELO: pinta MANIFESTAR da esquerda para a direita (0,5 s → 0,9 s).
+    tl.fromTo("#g-mt", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 0.5);
+
+    // RÓTULO: a tira de papel preta entra caindo com leve rotação, como um recorte colado.
+    tl.fromTo(
+      "#g-rotulo",
+      { opacity: 0, y: -40, rotation: 8 },
+      { opacity: 1, y: 0, rotation: -3, duration: 0.45, ease: "back.out(1.6)" },
+      0.35,
+    );
+
+    // SETA VERMELHA desenhada à mão: corpo e depois a ponta.
+    tl.fromTo("#g-seta", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.35, ease: "power2.inOut" }, 0.85);
+    tl.fromTo("#g-seta-ponta", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.15, ease: "power2.out" }, 1.18);
+
+    // RISQUINHOS de ênfase no "?".
+    tl.fromTo("#g-enfase", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.3, ease: "power2.out" }, 1.3);
+
+    window.__timelines["gancho"] = tl;
+  </script>
+</template>

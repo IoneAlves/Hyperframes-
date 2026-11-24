@@ -1,0 +1,229 @@
+<!--
+  CENA 5 — FECHAMENTO (11,5 s a 15 s do vídeo)
+  Um cérebro e um coração ilustrados (recortes de papel com traço à mão), ligados por uma
+  linha pontilhada por onde passam pulsos de luz. Zoom lento (Ken Burns) na ilustração.
+  Texto final: "Pare de esperar sentir. Sinta primeiro." ("Sinta primeiro." com marca-texto).
+  Rodapé com a fonte: "Ideias de Joe Dispenza, em 'Quebrando o hábito de ser você mesmo'."
+-->
+<template>
+  <style>
+    #root {
+      position: absolute;
+      inset: 0;
+    }
+    /* Grupo da ilustração: só ele recebe o zoom; o texto fica parado depois de pousar */
+    #c-ilustra {
+      position: absolute;
+      inset: 0;
+      transform-origin: 495px 680px;
+    }
+    /* Papéis de apoio atrás de cada figura (jornal atrás do cérebro, preto atrás do coração) */
+    #c-cerebro-fundo {
+      left: 95px;
+      top: 455px;
+    }
+    #c-cerebro-fundo .papel {
+      width: 300px;
+      height: 290px;
+    }
+    #c-coracao-fundo {
+      left: 600px;
+      top: 455px;
+    }
+    #c-coracao-fundo .papel {
+      width: 300px;
+      height: 290px;
+    }
+    #c-frase-fundo {
+      left: 90px;
+      top: 880px;
+    }
+    #c-frase-fundo .papel {
+      width: 810px;
+      height: 330px;
+    }
+    #c-cerebro {
+      left: 110px;
+      top: 470px;
+    }
+    #c-coracao {
+      left: 620px;
+      top: 480px;
+    }
+    .c-figura svg {
+      display: block;
+      width: 260px;
+      height: 240px;
+      overflow: visible;
+    }
+    .c-legenda {
+      position: absolute;
+      width: 260px;
+      top: 770px;
+      text-align: center;
+      font-size: 30px;
+      color: var(--tinta);
+    }
+    #c-leg-mente {
+      left: 110px;
+    }
+    #c-leg-corpo {
+      left: 620px;
+    }
+    #c-frase {
+      position: absolute;
+      left: 70px;
+      width: 850px;
+      top: 920px;
+      text-align: center;
+    }
+    #c-l1 {
+      display: block;
+      font-size: 72px;
+      font-style: italic;
+      font-weight: 700;
+      white-space: nowrap; /* cada frase em uma linha só */
+    }
+    #c-l2 {
+      display: block;
+      margin-top: 30px;
+      font-size: 104px;
+      white-space: nowrap;
+    }
+    #c-rodape {
+      position: absolute;
+      left: 110px;
+      width: 770px;
+      top: 1290px;
+      text-align: center;
+      font-family: var(--font-rotulo);
+      font-weight: 500;
+      font-size: 30px;
+      line-height: 1.35;
+      color: var(--tinta);
+      opacity: 0.75;
+    }
+    #c-regua {
+      position: absolute;
+      left: 395px;
+      width: 200px;
+      top: 1260px;
+      height: 3px;
+      background: var(--cinza);
+      transform-origin: 50% 50%;
+    }
+  </style>
+
+  <div id="root" data-composition-id="fechamento" data-width="1080" data-height="1920">
+    <div id="c-ilustra">
+      <!-- CÉREBRO: recorte branco com contorno e dobras desenhadas à mão -->
+      <div id="c-cerebro-fundo" class="recorte"><div class="papel jornal rasgado-b"></div></div>
+      <div id="c-coracao-fundo" class="recorte"><div class="papel preto pontos"></div></div>
+      <div id="c-cerebro" class="recorte c-figura">
+        <svg viewBox="0 0 260 240">
+          <path fill="#FBF8F1" stroke="#111111" stroke-width="7" stroke-linejoin="round"
+            d="M70,190 C25,192 8,140 34,115 C10,85 30,40 72,42 C80,12 130,6 148,30 C172,8 222,24 220,62 C252,78 250,135 222,150 C232,190 190,212 160,196 C145,220 95,220 70,190 Z" />
+          <path class="traco" pathLength="1" stroke="#111111" stroke-width="6" style="stroke-dashoffset: 0"
+            d="M136,34 C126,70 146,100 128,130 C112,158 134,180 130,204" />
+          <path class="traco" pathLength="1" stroke="#111111" stroke-width="5" style="stroke-dashoffset: 0"
+            d="M58,82 C82,78 92,96 86,116 M46,140 C70,132 90,150 100,170 M178,70 C160,84 170,110 192,112 M170,150 C186,140 206,150 204,170" />
+        </svg>
+      </div>
+
+      <!-- CORAÇÃO: recorte roxo, bate (pulsa) no ritmo dos pulsos da linha -->
+      <div id="c-coracao" class="recorte c-figura">
+        <svg viewBox="0 0 260 240">
+          <g id="c-batida" style="transform-origin: 130px 130px">
+            <path fill="#7B2FF7" stroke="#111111" stroke-width="7" stroke-linejoin="round"
+              d="M130,214 C92,184 26,140 24,86 C22,46 58,24 88,30 C110,34 124,50 130,66 C138,48 154,32 178,30 C210,28 240,52 236,94 C232,146 168,186 130,214 Z" />
+            <path class="traco" pathLength="1" stroke="#FBF8F1" stroke-width="7" style="stroke-dashoffset: 0"
+              d="M62,74 C66,60 78,54 90,56" />
+          </g>
+        </svg>
+      </div>
+
+      <div id="c-leg-mente" class="c-legenda rotulo">mente</div>
+      <div id="c-leg-corpo" class="c-legenda rotulo">corpo</div>
+
+      <!-- A LINHA que liga cérebro e coração, e o pulso que viaja por ela -->
+      <svg class="camada" viewBox="0 0 1080 1920">
+        <path id="c-linha" class="traco" pathLength="1" stroke="#111111" stroke-width="7"
+          d="M372,590 C440,520 560,660 622,590" />
+        <circle id="c-pulso" r="15" fill="#FFD400" stroke="#111111" stroke-width="4" cx="0" cy="0" />
+      </svg>
+    </div>
+
+    <!-- Papel branco com fita atrás do texto final -->
+    <div id="c-frase-fundo" class="recorte dupla d-lilas fita"><div class="papel"></div></div>
+    <svg id="c-brilho1" class="brilho" style="left:860px;top:860px;width:90px;height:90px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#FFD400" stroke="#111111" stroke-width="4" /></svg>
+    <svg id="c-brilho2" class="brilho" style="left:70px;top:1150px;width:70px;height:70px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#7B2FF7" stroke="#111111" stroke-width="4" /></svg>
+
+    <!-- TEXTO FINAL -->
+    <div id="c-frase" class="titulo">
+      <span id="c-l1">Pare de esperar sentir.</span>
+      <span id="c-l2"><span class="mt"><span class="mt-tinta" id="c-mt"></span>Sinta primeiro.</span></span>
+    </div>
+
+    <div id="c-regua"></div>
+    <div id="c-rodape">Ideias de Joe Dispenza, em “Quebrando o hábito de ser você mesmo”.</div>
+  </div>
+
+  <script>
+    const tl = gsap.timeline({ paused: true });
+
+    // KEN BURNS: zoom lento e contínuo na ilustração (1.00 → 1.12) durante 3,5 s.
+    tl.fromTo("#c-ilustra", { scale: 1 }, { scale: 1.12, duration: 3.5, ease: "power1.inOut" }, 0);
+
+    // PAPÉIS DE APOIO das figuras e do texto.
+    tl.fromTo("#c-cerebro-fundo", { opacity: 0, rotation: 14 }, { opacity: 1, rotation: 6, duration: 0.3, ease: "expo.out" }, 0);
+    tl.fromTo("#c-coracao-fundo", { opacity: 0, rotation: -14 }, { opacity: 1, rotation: -7, duration: 0.3, ease: "expo.out" }, 0.05);
+    tl.fromTo("#c-frase-fundo", { opacity: 0, rotation: 5, y: 40 }, { opacity: 1, rotation: -1.5, y: 0, duration: 0.35, ease: "expo.out" }, 0.6);
+    tl.fromTo(["#c-brilho1", "#c-brilho2"], { scale: 0, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.35, stagger: 0.2, ease: "back.out(2)" }, 1.5);
+
+    // CÉREBRO e CORAÇÃO entram como recortes colados, de lados opostos.
+    tl.fromTo("#c-cerebro", { opacity: 0, x: -60, rotation: -14 }, { opacity: 1, x: 0, rotation: -4, duration: 0.4, ease: "back.out(1.5)" }, 0);
+    tl.fromTo("#c-coracao", { opacity: 0, x: 60, rotation: 14 }, { opacity: 1, x: 0, rotation: 5, duration: 0.4, ease: "back.out(1.5)" }, 0.1);
+    tl.fromTo(["#c-leg-mente", "#c-leg-corpo"], { opacity: 0 }, { opacity: 1, duration: 0.2, stagger: 0.08, ease: "power2.out" }, 0.35);
+
+    // A LINHA se desenha do cérebro para o coração.
+    tl.fromTo("#c-linha", { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.4, ease: "power2.inOut" }, 0.35);
+
+    // PULSOS: a bolinha amarela percorre a linha (cérebro → coração) 4 vezes.
+    // A posição é calculada a partir do progresso do tween (função do tempo, logo
+    // determinística). A cada chegada, o coração "bate".
+    const linha = document.querySelector("#c-linha");
+    const comprimento = linha.getTotalLength();
+    const pulso = document.querySelector("#c-pulso");
+    const posicionar = (p) => {
+      const pt = linha.getPointAtLength(p * comprimento);
+      pulso.setAttribute("cx", pt.x.toFixed(2));
+      pulso.setAttribute("cy", pt.y.toFixed(2));
+    };
+    posicionar(0);
+    // Estado de repouso (antes do 1º pulso): bolinha invisível, coração em tamanho normal.
+    tl.set(pulso, { opacity: 0 }, 0);
+    tl.set("#c-batida", { scale: 1 }, 0);
+    for (let i = 0; i < 4; i++) {
+      const t0 = 0.8 + i * 0.65;
+      const estado = { p: 0 };
+      tl.to(pulso, { opacity: 1, duration: 0.08 }, t0);
+      tl.fromTo(estado, { p: 0 }, { p: 1, duration: 0.45, ease: "power1.inOut", onUpdate: () => posicionar(estado.p) }, t0);
+      tl.to(pulso, { opacity: 0, duration: 0.08 }, t0 + 0.42);
+      // batida do coração na chegada do pulso
+      tl.to("#c-batida", { scale: 1.12, duration: 0.09, yoyo: true, repeat: 1, ease: "power2.out" }, t0 + 0.45);
+    }
+
+    // FRASE 1: a linha inteira entra de desfocada para nítida.
+    tl.fromTo("#c-l1", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 0.75);
+
+    // FRASE 2 "Sinta primeiro.": entra grande e assenta; depois o marca-texto passa.
+    tl.fromTo("#c-l2", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.35, ease: "expo.out" }, 1.1);
+    tl.fromTo("#c-mt", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power2.inOut" }, 1.4);
+
+    // RODAPÉ com a fonte: entra cedo (0,3 s) para ficar tempo suficiente na tela para leitura.
+    tl.fromTo("#c-regua", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, 0.25);
+    tl.fromTo("#c-rodape", { opacity: 0 }, { opacity: 0.8, duration: 0.3, ease: "power2.out" }, 0.3);
+
+    window.__timelines["fechamento"] = tl;
+  </script>
+</template>
