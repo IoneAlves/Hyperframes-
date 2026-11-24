@@ -17,7 +17,7 @@
       inset: 0;
       transform-origin: 495px 680px;
     }
-    /* Papéis de apoio atrás de cada figura (jornal atrás do cérebro, preto atrás do coração) */
+    /* Papéis atrás de cada figura (preto atrás do cérebro branco, amarelo atrás do coração roxo) */
     #c-cerebro-fundo {
       left: 95px;
       top: 455px;
@@ -101,7 +101,6 @@
       font-size: 30px;
       line-height: 1.35;
       color: var(--tinta);
-      opacity: 0.75;
     }
     #c-regua {
       position: absolute;
@@ -117,8 +116,8 @@
   <div id="root" data-composition-id="fechamento" data-width="1080" data-height="1920">
     <div id="c-ilustra">
       <!-- CÉREBRO: recorte branco com contorno e dobras desenhadas à mão -->
-      <div id="c-cerebro-fundo" class="recorte"><div class="papel jornal rasgado-b"></div></div>
-      <div id="c-coracao-fundo" class="recorte"><div class="papel preto pontos"></div></div>
+      <div id="c-cerebro-fundo" class="recorte"><div class="papel preto rasgado-b"></div></div>
+      <div id="c-coracao-fundo" class="recorte"><div class="papel amarelo"></div></div>
       <div id="c-cerebro" class="recorte c-figura">
         <svg viewBox="0 0 260 240">
           <path fill="#FBF8F1" stroke="#111111" stroke-width="7" stroke-linejoin="round"
@@ -154,7 +153,7 @@
     </div>
 
     <!-- Papel branco com fita atrás do texto final -->
-    <div id="c-frase-fundo" class="recorte dupla d-lilas fita"><div class="papel"></div></div>
+    <div id="c-frase-fundo" class="recorte dupla d-roxo fita"><div class="papel"></div></div>
     <svg id="c-brilho1" class="brilho" style="left:860px;top:860px;width:90px;height:90px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#FFD400" stroke="#111111" stroke-width="4" /></svg>
     <svg id="c-brilho2" class="brilho" style="left:70px;top:1150px;width:70px;height:70px" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#7B2FF7" stroke="#111111" stroke-width="4" /></svg>
 
@@ -222,7 +221,7 @@
 
     // RODAPÉ com a fonte: entra cedo (0,3 s) para ficar tempo suficiente na tela para leitura.
     tl.fromTo("#c-regua", { scaleX: 0 }, { scaleX: 1, duration: 0.3, ease: "power3.out" }, 0.25);
-    tl.fromTo("#c-rodape", { opacity: 0 }, { opacity: 0.8, duration: 0.3, ease: "power2.out" }, 0.3);
+    tl.fromTo("#c-rodape", { opacity: 0 }, { opacity: 1, duration: 0.3, ease: "power2.out" }, 0.3);
 
     window.__timelines["fechamento"] = tl;
   </script>

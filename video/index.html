@@ -5,17 +5,15 @@
 
   Este arquivo é a composição raiz. Ele:
     1. define a paleta, as fontes e as peças de "colagem" usadas em todas as cenas;
-    2. desenha o MUNDO de fundo: papel creme amassado com quadriculado + recortes nas bordas
-       (jornal, papel preto rasgado com meio-tom, papel roxo, fitas adesivas, brilhos);
+    2. desenha o fundo: SÓ papel creme amassado (limpo, sem outras peças, para não
+       competir com o conteúdo);
     3. monta as 5 cenas (compositions/*.html) em cortes secos, uma após a outra;
     4. põe por cima de tudo a vinheta e o granulado de filme.
 
-  A cada corte, os recortes da borda "pulam" para um novo arranjo (como se a colagem
-  fosse refeita) e o fundo faz um zoom lento tipo Ken Burns durante a cena.
+  Durante cada cena o papel de fundo faz um zoom lento tipo Ken Burns.
 
   Área segura do TikTok: nada importante nos 250 px de baixo nem nos 150 px da direita.
   O conteúdo das cenas fica entre x = 70 e x = 920 e entre y ≈ 200 e y ≈ 1600.
-  Os recortes decorativos das bordas podem ocupar as zonas de interface (são só textura).
 -->
 <html
   lang="pt-BR"
@@ -53,9 +51,6 @@
         --amassado: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='1080' height='1920'><filter id='c' x='0' y='0' width='100%' height='100%'><feTurbulence type='turbulence' baseFrequency='0.0045 0.0065' numOctaves='5' seed='21' result='t'/><feDiffuseLighting in='t' surfaceScale='7' diffuseConstant='1.32' lighting-color='%23F6F0E4'><feDistantLight azimuth='235' elevation='55'/></feDiffuseLighting></filter><rect width='100%' height='100%' filter='url(%23c)'/></svg>");
         /* Granulado de filme (ruído preto e branco de alto contraste) */
         --grao: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='g'><feTurbulence type='fractalNoise' baseFrequency='1.4' numOctaves='2' seed='2' stitchTiles='stitch'/><feColorMatrix type='saturate' values='0'/><feComponentTransfer><feFuncA type='table' tableValues='0 0.9'/></feComponentTransfer></filter><rect width='100%' height='100%' filter='url(%23g)'/></svg>");
-        /* Quadriculado de caderno (linhas finas a cada 72 px) */
-        --quadriculado: repeating-linear-gradient(0deg, rgba(60, 50, 40, 0.13) 0 2px, transparent 2px 72px),
-          repeating-linear-gradient(90deg, rgba(60, 50, 40, 0.13) 0 2px, transparent 2px 72px);
         /* Meio-tom (retícula de pontos de jornal) */
         --meio-tom: radial-gradient(circle, rgba(17, 17, 17, 0.9) 0 2.4px, transparent 2.9px);
         --meio-tom-claro: radial-gradient(circle, rgba(243, 237, 226, 0.55) 0 2.4px, transparent 2.9px);
@@ -96,22 +91,19 @@
         z-index: 0;
         transform-origin: 50% 45%;
       }
-      /* Papel creme amassado + quadriculado + fibra fina */
+      /* Papel creme amassado + fibra fina (o único elemento do fundo) */
       #papel {
         position: absolute;
         inset: -40px;
         background-color: var(--creme);
-        background-image: var(--ruido-fino), var(--quadriculado), var(--amassado);
-        background-size: 360px 360px, auto, 1160px 2000px;
-      }
-      .peca-fundo {
-        position: absolute;
+        background-image: var(--ruido-fino), var(--amassado);
+        background-size: 360px 360px, 1160px 2000px;
       }
       /* Vinheta mais marcada nas bordas (papel envelhecido) */
       #vinheta {
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse at 46% 45%, rgba(0, 0, 0, 0) 50%, rgba(50, 32, 10, 0.32) 100%);
+        background: radial-gradient(ellipse at 46% 45%, rgba(0, 0, 0, 0) 50%, rgba(50, 32, 10, 0.24) 100%);
         z-index: 50;
         pointer-events: none;
       }
@@ -131,7 +123,7 @@
         height: 2220px;
         background-image: var(--grao);
         background-size: 300px 300px;
-        opacity: 0.22;
+        opacity: 0.16;
         mix-blend-mode: multiply;
       }
 
@@ -202,8 +194,6 @@
       }
       .dupla.d-preto::before {
         background-color: var(--tinta);
-        background-image: var(--meio-tom-claro);
-        background-size: 11px 11px;
       }
       .dupla.d-jornal::before {
         background-color: var(--papel-jornal);
@@ -212,8 +202,6 @@
       }
       .dupla.d-lilas::before {
         background-color: var(--lilas);
-        background-image: var(--meio-tom);
-        background-size: 11px 11px;
         transform: rotate(4deg);
       }
       /* FITA ADESIVA translúcida prendendo o recorte (bordas serrilhadas) */
@@ -235,6 +223,17 @@
         transform: rotate(-38deg);
       }
 
+      /* ETIQUETA DE SEÇÃO: tira de papel preto com texto creme (alto contraste),
+         mesma posição e tamanho em todas as cenas para manter o ritmo visual. */
+      .etiqueta {
+        left: 495px;
+        top: 300px;
+      }
+      .etiqueta .papel {
+        padding: 20px 34px 18px;
+        font-size: 32px;
+        white-space: nowrap;
+      }
       .titulo {
         font-family: var(--font-titulo);
         font-weight: 900;
@@ -291,32 +290,7 @@
         overflow: visible;
       }
 
-      /* ---------- Posições-base dos recortes da borda ---------- */
-      #fb-jornal-topo { left: -70px; top: 30px; }
-      #fb-jornal-topo .papel { width: 560px; height: 210px; }
-      #fb-preto-topo { left: 760px; top: -70px; }
-      #fb-preto-topo .papel { width: 420px; height: 300px; }
-      #fb-roxo { left: 960px; top: 640px; }
-      #fb-roxo .papel { width: 220px; height: 420px; }
-      #fb-amarelo { left: -110px; top: 1080px; }
-      #fb-amarelo .papel { width: 230px; height: 170px; }
-      #fb-lilas { left: -120px; top: 520px; }
-      #fb-lilas .papel { width: 210px; height: 300px; }
-      #fb-preto-base { left: -150px; top: 1640px; }
-      #fb-preto-base .papel { width: 600px; height: 360px; }
-      #fb-jornal-base { left: 470px; top: 1690px; }
-      #fb-jornal-base .papel { width: 680px; height: 300px; }
-      #fb-fita-1 { left: 380px; top: 150px; }
-      #fb-fita-2 { left: 880px; top: 1620px; }
-      .fita-solta {
-        width: 190px;
-        height: 54px;
-        background: rgba(246, 238, 214, 0.8);
-        clip-path: polygon(0% 8%, 4% 0%, 96% 4%, 100% 14%, 97% 30%, 100% 50%, 96% 70%, 100% 88%, 95% 100%, 3% 96%, 0% 84%, 3% 64%, 0% 44%, 3% 24%);
-      }
-      #fb-brilho-1 { left: 940px; top: 330px; }
-      #fb-brilho-2 { left: 40px; top: 1450px; }
-      #fb-brilho-3 { left: 960px; top: 1240px; }
+
     </style>
   </head>
   <body>
@@ -328,24 +302,9 @@
       data-width="1080"
       data-height="1920"
     >
-      <!-- MUNDO DE FUNDO: papel amassado + recortes nas bordas (fixos, rearranjados a cada corte) -->
+      <!-- FUNDO: só o papel amassado -->
       <div id="mundo" data-layout-ignore>
         <div id="papel"></div>
-
-        <div id="fb-jornal-topo" class="recorte peca-fundo"><div class="papel jornal"></div></div>
-        <div id="fb-preto-topo" class="recorte peca-fundo"><div class="papel preto pontos rasgado-b"></div></div>
-        <div id="fb-lilas" class="recorte peca-fundo"><div class="papel lilas pontos rasgado-b"></div></div>
-        <div id="fb-roxo" class="recorte peca-fundo"><div class="papel roxo"></div></div>
-        <div id="fb-amarelo" class="recorte peca-fundo"><div class="papel amarelo rasgado-b"></div></div>
-        <div id="fb-preto-base" class="recorte peca-fundo"><div class="papel preto pontos"></div></div>
-        <div id="fb-jornal-base" class="recorte peca-fundo"><div class="papel jornal rasgado-b"></div></div>
-        <div id="fb-fita-1" class="peca-fundo fita-solta"></div>
-        <div id="fb-fita-2" class="peca-fundo fita-solta"></div>
-
-        <!-- Brilhos de 4 pontas -->
-        <svg id="fb-brilho-1" class="brilho peca-fundo" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#7B2FF7" stroke="#111111" stroke-width="4" /></svg>
-        <svg id="fb-brilho-2" class="brilho peca-fundo" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#FFD400" stroke="#111111" stroke-width="4" /></svg>
-        <svg id="fb-brilho-3" class="brilho peca-fundo" viewBox="-50 -50 100 100"><path d="M0,-48 C6,-10 10,-6 48,0 C10,6 6,10 0,48 C-6,10 -10,6 -48,0 C-10,-6 -6,-10 0,-48 Z" fill="#111111" /></svg>
       </div>
 
       <!-- As 5 cenas, em cortes secos: cada uma começa exatamente quando a anterior termina -->
@@ -424,19 +383,9 @@
         tl.set("#grao", { x: Math.round(entre(-140, 140)), y: Math.round(entre(-140, 140)) }, i / 15);
       }
 
-      // 2) COLAGEM QUE SE REFAZ A CADA CORTE: em cada início de cena, cada recorte da borda
-      //    salta (sem transição) para um novo deslocamento e rotação — como se o editor
-      //    tivesse recolado a página. Dá ritmo aos cortes secos.
-      const cortes = [0, 2.5, 5.5, 8.5, 11.5];
-      const pecas = gsap.utils.toArray(".peca-fundo");
-      cortes.forEach((t) => {
-        pecas.forEach((p) => {
-          tl.set(p, { x: Math.round(entre(-90, 90)), y: Math.round(entre(-70, 70)), rotation: +entre(-18, 18).toFixed(1) }, t);
-        });
-      });
-
-      // 3) KEN BURNS DO FUNDO: dentro de cada cena o mundo de fundo aproxima devagar
+      // 2) KEN BURNS DO FUNDO: dentro de cada cena o mundo de fundo aproxima devagar
       //    (1.00 → 1.05) e volta ao zero no corte seguinte.
+      const cortes = [0, 2.5, 5.5, 8.5, 11.5];
       const fins = [2.5, 5.5, 8.5, 11.5, 15];
       cortes.forEach((t, i) => {
         tl.fromTo(
